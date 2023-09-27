@@ -7,13 +7,19 @@ var userClickedPattern = [];
 var started = false;
 var level = 0;
 
-$(document).keypress(function() {
+function startGame() {
   if (!started) {
     $("#level-title").text("Level " + level);
-    nextSequence();
+    setTimeout(nextSequence, 1000); // Add a delay before showing the sequence
     started = true;
   }
-});
+}
+
+const st = document.querySelector('a');
+st.addEventListener("click", startGame);
+
+$(document).keypress(startGame);
+
 
 $(".btn").click(function() {
 
